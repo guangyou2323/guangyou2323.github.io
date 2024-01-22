@@ -1,19 +1,18 @@
 <?php
 
-namespace Typecho;
+namespace Typecho\Db;
+
+if (!defined('__TYPECHO_ROOT_DIR__')) {
+    exit;
+}
+
+use Typecho\Exception as TypechoException;
 
 /**
- * Typecho异常基类
- * 主要重载异常打印函数
+ * 数据库异常类
  *
- * @package Exception
+ * @package Db
  */
-class Exception extends \Exception
+class Exception extends TypechoException
 {
-
-    public function __construct($message, $code = 0)
-    {
-        $this->message = $message;
-        $this->code = $code;
-    }
 }

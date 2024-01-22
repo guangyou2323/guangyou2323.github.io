@@ -1,23 +1,21 @@
 <?php
 
-namespace Typecho\Db\Adapter\Pdo;
+namespace Typecho\Db\Adapter;
 
 use Typecho\Config;
 use Typecho\Db;
-use Typecho\Db\Adapter\SQLException;
-use Typecho\Db\Adapter\Pdo;
-use Typecho\Db\Adapter\PgsqlTrait;
+use Typecho\Db\Adapter;
 
 if (!defined('__TYPECHO_ROOT_DIR__')) {
     exit;
 }
 
 /**
- * 数据库Pdo_Pgsql适配器
+ * 数据库Pgsql适配器
  *
  * @package Db
  */
-class Pgsql extends Pdo
+class Pgsql implements Adapter
 {
     use PgsqlTrait;
 
@@ -29,49 +27,121 @@ class Pgsql extends Pdo
      */
     public static function isAvailable(): bool
     {
-        return parent::isAvailable() && in_array('pgsql', \PDO::getAvailableDrivers());
+        return extension_loaded('pgsql');
+    }
+
+    /**
+     * 数据库连接函数
+     *
+     * @param Config $config 数据库配置
+     * @return resource
+     * @throws ConnectionException
+     */
+    public function connect(Config $config)
+    {
+        $dsn = "host={$config->host} port={$config->port}"
+            . " dbname={$config->database} user={$config->user} password={$config->password}";
+
+        if ($config->charset) {
+            $dsn .= " options='--client_encoding={$config->charset}'";
+        }
+
+        if ($dbLink = @pg_connect($dsn)) {
+            return $dbLink;
+        }
+
+        /** 数据库异常 */
+        throw new ConnectionException("Couldn't connect to database.");
+    }
+
+    /**
+     * 获取数据库版本
+     *
+     * @param mixed $handle
+     * @return string
+     */
+    public function getVersion($handle): string
+    {
+        $version = pg_version($handle);
+        return $version['server'];
     }
 
     /**
      * 执行数据库查询
      *
      * @param string $query 数据库查询SQL字符串
-     * @param \PDO $handle 连接对象
+     * @param resource $handle 连接对象
      * @param integer $op 数据库读写状态
      * @param string|null $action 数据库动作
      * @param string|null $table 数据表
-     * @return \PDOStatement
+     * @return resource
      * @throws SQLException
      */
-    public function query(
-        string $query,
-        $handle,
-        int $op = Db::READ,
-        ?string $action = null,
-        ?string $table = null
-    ): \PDOStatement {
+    public function query(string $query, $handle, int $op = Db::READ, ?string $action = null, ?string $table = null)
+    {
         $this->prepareQuery($query, $handle, $action, $table);
-        return parent::query($query, $handle, $op, $action, $table);
+        if ($resource = pg_query($handle, $query)) {
+            return $resource;
+        }
+
+        /** 数据库异常 */
+        throw new SQLException(
+            @pg_last_error($handle),
+            pg_result_error_field(pg_get_result($handle), PGSQL_DIAG_SQLSTATE)
+        );
     }
 
     /**
-     * 初始化数据库
+     * 将数据查询的其中一行作为数组取出,其中字段名对应数组键值
      *
-     * @param Config $config 数据库配置
-     * @return \PDO
+     * @param resource $resource 查询返回资源标识
+     * @return array|null
      */
-    public function init(Config $config): \PDO
+    public function fetch($resource): ?array
     {
-        $pdo = new \PDO(
-            "pgsql:dbname={$config->database};host={$config->host};port={$config->port}",
-            $config->user,
-            $config->password
-        );
+        return pg_fetch_assoc($resource) ?: null;
+    }
 
-        if ($config->charset) {
-            $pdo->exec("SET NAMES '{$config->charset}'");
-        }
+    /**
+     * 将数据查询的其中一行作为对象取出,其中字段名对应对象属性
+     *
+     * @param resource $resource 查询的资源数据
+     * @return object|null
+     */
+    public function fetchObject($resource): ?object
+    {
+        return pg_fetch_object($resource) ?: null;
+    }
 
-        return $pdo;
+    /**
+     * @param resource $resource
+     * @return array|null
+     */
+    public function fetchAll($resource): array
+    {
+        return pg_fetch_all($resource, PGSQL_ASSOC) ?: [];
+    }
+
+    /**
+     * 取出最后一次查询影响的行数
+     *
+     * @param resource $resource 查询的资源数据
+     * @param resource $handle 连接对象
+     * @return integer
+     */
+    public function affectedRows($resource, $handle): int
+    {
+        return pg_affected_rows($resource);
+    }
+
+    /**
+     * 引号转义函数
+     *
+     * @param mixed $string 需要转义的字符串
+     * @return string
+     */
+    public function quoteValue($string): string
+    {
+        return '\'' . pg_escape_string($string) . '\'';
     }
 }
