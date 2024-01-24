@@ -3,3 +3,14 @@ h1{
     color:blueviolet;
     font-weight: bold;
 }
+
+p{
+    text-align: center;
+    color:aliceblue;
+    font-size: large;
+    font-weight: bolder;
+}
+
+body {
+    background-color:#b0c4de;
+}
