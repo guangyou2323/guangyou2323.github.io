@@ -1,10 +1,10 @@
-h1{
+h1 {
     text-align: center;
     color:blueviolet;
     font-weight: bold;
 }
 
-p{
+p {
     text-align: center;
     color:aliceblue;
     font-size: large;
@@ -19,8 +19,10 @@ div {
     text-align: center;
 }
 
-a{
+a {
     text-align: center;
+    margin-left: 50%; 
+    margin-right: 50%; 
     color:cadetblue;
     font-size: large;
     font-weight: bolder;
