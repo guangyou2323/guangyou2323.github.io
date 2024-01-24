@@ -14,3 +14,14 @@ p{
 body {
     background-color:#b0c4de;
 }
+
+div {
+    text-align: center;
+}
+
+a{
+    text-align: center;
+    color:cadetblue;
+    font-size: large;
+    font-weight: bolder;
+}
