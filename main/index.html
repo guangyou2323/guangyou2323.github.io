@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Insight Hub</title>
+    <style>
+        /* 基础样式 */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --background-color: #f9f9f9;
+            --text-color: #34495e;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* 导航栏 */
+        .navbar {
+            background-color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* 语言切换 */
+        .language-switcher button {
+            background: none;
+            border: 1px solid var(--secondary-color);
+            padding: 0.3rem 0.8rem;
+            margin-left: 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        /* 主体内容 */
+        .main-content {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            padding: 2rem;
+        }
+
+        /* 欢迎区域 */
+        .hero-section {
+            text-align: center;
+            padding: 4rem 0;
+            background: linear-gradient(45deg, #f8f9fa, #ffffff);
+            border-radius: 8px;
+            margin-bottom: 3rem;
+        }
+
+        /* 特色文章 */
+        .featured-articles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .article-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .article-image {
+            height: 200px;
+            background: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .article-content {
+            padding: 1.5rem;
+        }
+
+        /* 个人简介 */
+        .profile-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .profile-content {
+            flex: 1;
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-bio {
+            color: #7f8c8d;
+            line-height: 1.6;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .featured-articles {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo" id="logo">Tech Insights</div>
+            <div class="nav-links">
+                <a href="#" id="navHome">首页</a>
+                <a href="#" id="navBlog">博客</a>
+                <a href="#" id="navAbout">关于</a>
+                <a href="#" id="navContact">联系</a>
+            </div>
+            <div class="language-switcher">
+                <button id="enBtn">EN</button>
+                <button id="zhBtn">中文</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主体内容 -->
+    <div class="main-content">
+        <!-- 欢迎区域 -->
+        <section class="hero-section" id="heroSection">
+            <h1 id="heroTitle">探索科技前沿</h1>
+            <p id="heroText">发现最新技术趋势与深度分析</p>
+        </section>
+
+        <!-- 主要内容区 -->
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem;">
+            <!-- 特色文章 -->
+            <div class="featured-articles">
+                <a href="/index.html" class="article-card">
+                    <div class="article-image" style="background-image: url('ai-concept.jpg')"></div>
+                    <div class="article-content">
+                        <h3 id="article1Title">人工智能新突破</h3>
+                        <p id="article1Desc">深度解析最新AI技术进展...</p>
+                    </div>
+                </a>
+                <a href="/article/20250213001.html" class="article-card">
+                    <div class="article-image" style="background-image: url('blockchain.jpg')"></div>
+                    <div class="article-content">
+                        <h3 id="article2Title">区块链应用实践</h3>
+                        <p id="article2Desc">探索去中心化技术新场景...</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- 个人简介 -->
+            <div class="profile-section">
+                <div class="profile-image" style="background-image: url('profile.jpg')"></div>
+                <div class="profile-content">
+                    <div class="profile-name" id="profileName">张三</div>
+                    <div class="profile-bio" id="profileBio">
+                        资深技术博主，专注于人工智能和区块链技术研究。
+                        拥有10年互联网行业经验，热爱分享技术见解。
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 多语言内容配置
+        const content = {
+            en: {
+                logo: "Tech Insights",
+                nav: ["Home", "Blog", "About", "Contact"],
+                heroTitle: "Exploring Tech Frontiers",
+                heroText: "Discover the latest technology trends and in-depth analysis",
+                articles: {
+                    title: ["New Breakthroughs in AI", "Blockchain Applications"],
+                    desc: ["Deep analysis of latest AI developments...", "Exploring new decentralized technology scenarios..."]
+                },
+                profile: {
+                    name: "John Doe",
+                    bio: "Senior tech blogger specializing in AI and blockchain. 10+ years of experience in the internet industry, passionate about sharing technical insights."
+                }
+            },
+            zh: {
+                logo: "科技洞察",
+                nav: ["首页", "博客", "关于", "联系"],
+                heroTitle: "探索科技前沿",
+                heroText: "发现最新技术趋势与深度分析",
+                articles: {
+                    title: ["人工智能新突破", "区块链应用实践"],
+                    desc: ["深度解析最新AI技术进展...", "探索去中心化技术新场景..."]
+                },
+                profile: {
+                    name: "张三",
+                    bio: "资深技术博主，专注于人工智能和区块链技术研究。拥有10年互联网行业经验，热爱分享技术见解。"
+                }
+            }
+        };
+
+        // 语言切换功能
+        const elements = {
+            logo: document.getElementById('logo'),
+            navLinks: document.querySelectorAll('.nav-links a'),
+            heroTitle: document.getElementById('heroTitle'),
+            heroText: document.getElementById('heroText'),
+            articleTitles: document.querySelectorAll('[id^="article"]Title'),
+            articleDescs: document.querySelectorAll('[id^="article"]Desc'),
+            profileName: document.getElementById('profileName'),
+            profileBio: document.getElementById('profileBio')
+        };
+
+        function updateContent(lang) {
+            // 更新导航栏
+            elements.navLinks.forEach((link, index) => {
+                link.textContent = content[lang].nav[index];
+            });
+
+            // 更新其他内容
+            elements.logo.textContent = content[lang].logo;
+            elements.heroTitle.textContent = content[lang].heroTitle;
+            elements.heroText.textContent = content[lang].heroText;
+            elements.articleTitles.forEach((title, index) => {
+                title.textContent = content[lang].articles.title[index];
+            });
+            elements.articleDescs.forEach((desc, index) => {
+                desc.textContent = content[lang].articles.desc[index];
+            });
+            elements.profileName.textContent = content[lang].profile.name;
+            elements.profileBio.textContent = content[lang].profile.bio;
+        }
+
+        // 事件监听
+        document.getElementById('enBtn').addEventListener('click', () => {
+            updateContent('en');
+        });
+
+        document.getElementById('zhBtn').addEventListener('click', () => {
+            updateContent('zh');
+        });
+
+        // 默认加载英文
+        updateContent('en');
+    </script>
+</body>
+</html>
