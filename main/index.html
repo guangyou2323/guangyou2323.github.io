@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tech Insight Hub</title>
+    <title>Gavin's blog</title>
     <style>
-        /* 基础样式 */
         :root {
             --primary-color: #2c3e50;
             --secondary-color: #3498db;
@@ -26,7 +25,6 @@
             text-decoration: none;
         }
 
-        /* 导航栏 */
         .navbar {
             background-color: white;
             padding: 1rem 2rem;
@@ -66,7 +64,6 @@
             color: var(--secondary-color);
         }
 
-        /* 语言切换 */
         .language-switcher button {
             background: none;
             border: 1px solid var(--secondary-color);
@@ -82,14 +79,12 @@
             color: white;
         }
 
-        /* 主体内容 */
         .main-content {
             max-width: 1200px;
             margin: 80px auto 0;
             padding: 2rem;
         }
 
-        /* 欢迎区域 */
         .hero-section {
             text-align: center;
             padding: 4rem 0;
@@ -98,7 +93,6 @@
             margin-bottom: 3rem;
         }
 
-        /* 特色文章 */
         .featured-articles {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -129,7 +123,6 @@
             padding: 1.5rem;
         }
 
-        /* 个人简介 */
         .profile-section {
             background: white;
             padding: 2rem;
@@ -163,7 +156,6 @@
             line-height: 1.6;
         }
 
-        /* 响应式设计 */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -181,59 +173,53 @@
     </style>
 </head>
 <body>
-    <!-- 导航栏 -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo" id="logo">Tech Insights</div>
             <div class="nav-links">
-                <a href="#" id="navHome">首页</a>
+                <a href="#" id="navHome">首頁</a>
                 <a href="#" id="navBlog">博客</a>
-                <a href="#" id="navAbout">关于</a>
-                <a href="#" id="navContact">联系</a>
+                <a href="#" id="navAbout">關於</a>
+                <a href="#" id="navContact">聯絡</a>
             </div>
             <div class="language-switcher">
                 <button id="enBtn" class="active">EN</button>
-                <button id="zhBtn">中文</button>
+                <button id="zhBtn">中文（繁體）</button>
             </div>
         </div>
     </nav>
 
-    <!-- 主体内容 -->
     <div class="main-content">
-        <!-- 欢迎区域 -->
         <section class="hero-section" id="heroSection">
-            <h1 id="heroTitle">探索科技前沿</h1>
-            <p id="heroText">发现最新技术趋势与深度分析</p>
+            <h1 id="heroTitle">Gavin's Blog</h1>
+            <p id="heroText">日常生活的記錄簿</p>
         </section>
 
-        <!-- 主要内容区 -->
         <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem;">
-            <!-- 特色文章 -->
             <div class="featured-articles">
                 <a href="/index.html" class="article-card">
-                    <div class="article-image" style="background-image: url('ai-concept.jpg')"></div>
+                    <div class="article-image" style="background-image: url('learning.png')"></div>
                     <div class="article-content">
-                        <h3 id="article1Title">人工智能新突破</h3>
-                        <p id="article1Desc">深度解析最新AI技术进展...</p>
+                        <h3 id="article1Title">更好地瞭解我</h3>
+                        <p id="article1Desc">目標？興趣？</p>
                     </div>
                 </a>
-                <a href="/article/20250213001.html" class="article-card">
-                    <div class="article-image" style="background-image: url('blockchain.jpg')"></div>
+                <a href="#" class="article-card">
+                    <div class="article-image" style="background-image: url('nothing.jpg')"></div>
                     <div class="article-content">
-                        <h3 id="article2Title">区块链应用实践</h3>
-                        <p id="article2Desc">探索去中心化技术新场景...</p>
+                        <h3 id="article2Title">暫時未有内容</h3>
+                        <p id="article2Desc">暫時未有内容</p>
                     </div>
                 </a>
             </div>
 
-            <!-- 个人简介 -->
             <div class="profile-section">
                 <div class="profile-image" style="background-image: url('profile.jpg')"></div>
                 <div class="profile-content">
-                    <div class="profile-name" id="profileName">张三</div>
+                    <div class="profile-name" id="profileName">Gavin~</div>
                     <div class="profile-bio" id="profileBio">
-                        资深技术博主，专注于人工智能和区块链技术研究。
-                        拥有10年互联网行业经验，热爱分享技术见解。
+                        中二學生，愛好玩游戲與編程......
+                        希望你每天都開心！
                     </div>
                 </div>
             </div>
@@ -241,39 +227,37 @@
     </div>
 
     <script>
-        // 多语言内容配置
         const content = {
             en: {
-                logo: "Tech Insights",
+                logo: "Gavin's Blog",
                 nav: ["Home", "Blog", "About", "Contact"],
-                heroTitle: "Exploring Tech Frontiers",
-                heroText: "Discover the latest technology trends and in-depth analysis",
+                heroTitle: "Gavin's Blog",
+                heroText: "My dearest dairy book",
                 articles: {
-                    title: ["New Breakthroughs in AI", "Blockchain Applications"],
-                    desc: ["Deep analysis of latest AI developments...", "Exploring new decentralized technology scenarios..."]
+                    title: ["Learn More about me","Blank"],
+                    desc: ["Habits? Goals? Visit it for more information!","Working In Progress"]
                 },
                 profile: {
-                    name: "John Doe",
-                    bio: "Senior tech blogger specializing in AI and blockchain. 10+ years of experience in the internet industry, passionate about sharing technical insights."
+                    name: "Gavin~",
+                    bio: "Junior Form students, love gaming and programming. \n Hope you have a nice day!"
                 }
             },
             zh: {
-                logo: "科技洞察",
-                nav: ["首页", "博客", "关于", "联系"],
-                heroTitle: "探索科技前沿",
-                heroText: "发现最新技术趋势与深度分析",
+                logo: "Gavin's Blog",
+                nav: ["首頁", "博客", "關於", "聯絡"],
+                heroTitle: "Gavin's Blog",
+                heroText: "日常生活的記錄簿",
                 articles: {
-                    title: ["人工智能新突破", "区块链应用实践"],
-                    desc: ["深度解析最新AI技术进展...", "探索去中心化技术新场景..."]
+                    title: ["更好地瞭解我","暫時空白"],
+                    desc: ["目標？興趣？","施工中..."]
                 },
                 profile: {
-                    name: "张三",
-                    bio: "资深技术博主，专注于人工智能和区块链技术研究。拥有10年互联网行业经验，热爱分享技术见解。"
+                    name: "Gavin~",
+                    bio: "中二學生，愛好玩游戲與編程...... \n 希望你每天都開心！"
                 }
             }
         };
 
-        // 获取所有需要切换语言的元素
         const elements = {
             logo: document.getElementById('logo'),
             navLinks: document.querySelectorAll('.nav-links a'),
@@ -286,13 +270,10 @@
             langButtons: document.querySelectorAll('.language-switcher button')
         };
 
-        // 语言切换功能
         function switchLanguage(lang) {
-            // 更新按钮状态
             elements.langButtons.forEach(btn => btn.classList.remove('active'));
             document.getElementById(`${lang}Btn`).classList.add('active');
 
-            // 更新页面内容
             elements.logo.textContent = content[lang].logo;
             elements.navLinks.forEach((link, index) => {
                 link.textContent = content[lang].nav[index];
@@ -309,11 +290,8 @@
             elements.profileBio.textContent = content[lang].profile.bio;
         }
 
-        // 事件监听
         document.getElementById('enBtn').addEventListener('click', () => switchLanguage('en'));
         document.getElementById('zhBtn').addEventListener('click', () => switchLanguage('zh'));
-
-        // 默认加载英文
         switchLanguage('en');
     </script>
 </body>
