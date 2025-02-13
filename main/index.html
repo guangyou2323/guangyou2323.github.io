@@ -74,6 +74,12 @@
             margin-left: 1rem;
             cursor: pointer;
             border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .language-switcher button.active {
+            background-color: var(--secondary-color);
+            color: white;
         }
 
         /* 主体内容 */
@@ -267,7 +273,7 @@
             }
         };
 
-        // 语言切换功能
+        // 获取所有需要切换语言的元素
         const elements = {
             logo: document.getElementById('logo'),
             navLinks: document.querySelectorAll('.nav-links a'),
@@ -279,14 +285,19 @@
             profileBio: document.getElementById('profileBio')
         };
 
-        function updateContent(lang) {
-            // 更新导航栏
+        // 语言切换功能
+        function switchLanguage(lang) {
+            // 更新按钮状态
+            document.querySelectorAll('.language-switcher button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(`${lang}Btn`).classList.add('active');
+
+            // 更新页面内容
+            elements.logo.textContent = content[lang].logo;
             elements.navLinks.forEach((link, index) => {
                 link.textContent = content[lang].nav[index];
             });
-
-            // 更新其他内容
-            elements.logo.textContent = content[lang].logo;
             elements.heroTitle.textContent = content[lang].heroTitle;
             elements.heroText.textContent = content[lang].heroText;
             elements.articleTitles.forEach((title, index) => {
@@ -300,16 +311,11 @@
         }
 
         // 事件监听
-        document.getElementById('enBtn').addEventListener('click', () => {
-            updateContent('en');
-        });
-
-        document.getElementById('zhBtn').addEventListener('click', () => {
-            updateContent('zh');
-        });
+        document.getElementById('enBtn').addEventListener('click', () => switchLanguage('en'));
+        document.getElementById('zhBtn').addEventListener('click', () => switchLanguage('zh'));
 
         // 默认加载英文
-        updateContent('en');
+        switchLanguage('en');
     </script>
 </body>
 </html>
