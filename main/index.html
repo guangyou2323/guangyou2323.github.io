@@ -192,7 +192,7 @@
                 <a href="#" id="navContact">联系</a>
             </div>
             <div class="language-switcher">
-                <button id="enBtn">EN</button>
+                <button id="enBtn" class="active">EN</button>
                 <button id="zhBtn">中文</button>
             </div>
         </div>
@@ -279,18 +279,17 @@
             navLinks: document.querySelectorAll('.nav-links a'),
             heroTitle: document.getElementById('heroTitle'),
             heroText: document.getElementById('heroText'),
-            articleTitles: document.querySelectorAll('[id^="article"]Title'),
-            articleDescs: document.querySelectorAll('[id^="article"]Desc'),
+            articleTitles: document.querySelectorAll('[id^="article"][id$="Title"]'),
+            articleDescs: document.querySelectorAll('[id^="article"][id$="Desc"]'),
             profileName: document.getElementById('profileName'),
-            profileBio: document.getElementById('profileBio')
+            profileBio: document.getElementById('profileBio'),
+            langButtons: document.querySelectorAll('.language-switcher button')
         };
 
         // 语言切换功能
         function switchLanguage(lang) {
             // 更新按钮状态
-            document.querySelectorAll('.language-switcher button').forEach(btn => {
-                btn.classList.remove('active');
-            });
+            elements.langButtons.forEach(btn => btn.classList.remove('active'));
             document.getElementById(`${lang}Btn`).classList.add('active');
 
             // 更新页面内容
