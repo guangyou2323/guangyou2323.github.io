@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background: linear-gradient(150deg, #FFF3E0 0%, #FFE0B2 100%);
+            min-height: 100vh;
+            color: #4A4A4A;
+            font-family: 'Microsoft JhengHei', sans-serif;
+            padding: 3rem;
+            line-height: 1.8;
+        }
+
+        .letter {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 3rem 4rem;
+            box-shadow: 0 5px 25px rgba(255, 165, 0, 0.1);
+            position: relative;
+            border: 1px solid #FFD8A8;
+        }
+
+        .letter::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            right: 30px;
+            height: 15px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.03) 0%, transparent 100%);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.8rem;
+            color: #FF6B6B;
+            margin-bottom: 3rem;
+            font-weight: normal;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        .highlight {
+            color: #FF6B6B;
+            font-weight: bold;
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        p {
+            margin: 2rem 0;
+            padding-left: 1.5rem;
+            border-left: 3px solid #FFD8A8;
+            transition: all 0.3s;
+        }
+
+        p:hover {
+            border-left-width: 6px;
+            padding-left: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 1.5rem; }
+            .letter { padding: 2rem; }
+            h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="letter">
+        <h1>第8日 · 晨光手札</h1>
+
+        <p>親愛的<span class="highlight">[朋友名字]</span>：</p>
+
+        <p>昨晚經過你家樓下時，看見你房間的檯燈亮到很晚。是又在和數學題纏鬥嗎？記得把窗台上的小仙人掌移近檯燈些，它最近長出新芽了，就像你總在壓力下悄悄萌發的韌性。</p>
+
+        <p>最近午休經過操場，總會想起上個月我們在樹蔭下的那次談話。你說著「覺得自己像永遠追不上隊伍的候鳥」時，一片梧桐葉剛好落在你肩上。當時沒告訴你：候鳥的隊伍本就會不斷變換隊形，那些暫時落後的時刻，往往是為了調整更適合自己的飛行節奏。</p>
+
+        <p>這幾天特別留意到：<br>
+        • 你借給前座同學的橡皮擦，邊角還刻著小小的貓爪印<br>
+        • 午餐時你會把不愛吃的青椒仔細挑到便當蓋上<br>
+        • 放學收拾書包總比別人慢半拍，像是在確認什麼重要事物<br>
+        這些細碎的模樣，比任何程式碼都更生動地寫著「你是誰」。</p>
+
+        <p>如果今天遇到這些狀況，請試著：<br>
+        ✓ 當老師的批評讓你縮起肩膀時，用手指悄悄抵住掌心——那是我們說好的「自我暫停鍵」<br>
+        ✓ 課本空白處畫三個歪扭的笑臉，代表「我允許自己暫時不完美」<br>
+        ✓ 放學時繞遠路經過那家麵包店，讓剛出爐的奶油香包裹疲憊</p>
+
+        <p>上週末在書店看到本有趣的植物圖鑑，裡頭寫著：「含羞草在頻繁觸碰後會暫時失去閉合能力，這不是脆弱，而是生存智慧。」突然覺得很像你——總是敏感地承接各種情緒，但請記得給自己的感知系統放假。明天放學後，要不要一起去河堤看真正的含羞草？我保證不亂碰，只帶望遠鏡和熱可可。</p>
+
+        <p>最後想告訴你：今天早上買早餐時，早餐店阿姨多送了顆荷包蛋，說「給常來的那個安靜孩子」。你看，這個世界正用它的方式，默默記住你存在的痕跡。</p>
+
+        <p>今晚如果又熬夜，記得開著我送你的小夜燈。它暖黃的光暈裡，藏著我抄寫的《小王子》句子：「你在玫瑰花身上耗費的時間，使得你的玫瑰花如此重要。」而你在自己身上投入的每一分努力，都在讓你的存在變得更加獨特。</p>
+
+        <p>明天見，願你能在課本夾頁裡發現一片意外落葉。</p>
+    </div>
+</body>
+</html>
