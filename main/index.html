@@ -10,8 +10,58 @@
             --secondary-color: #3498db;
             --background-color: #f9f9f9;
             --text-color: #34495e;
+            --warning-color: #e74c3c;
+            --warning-light: #ff6b6b;
         }
 
+        /* 新增公告栏样式 */
+        .announcement-bar {
+            background: linear-gradient(135deg, var(--warning-color), var(--warning-light));
+            color: white;
+            text-align: center;
+            padding: 12px 20px;
+            font-weight: bold;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 2000;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            animation: pulse 2s infinite;
+        }
+        
+        .announcement-bar a {
+            color: #fff;
+            text-decoration: underline;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: rgba(0,0,0,0.2);
+        }
+        
+        .announcement-bar a:hover {
+            background: rgba(255,255,255,0.3);
+            text-decoration: none;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.6); }
+            70% { box-shadow: 0 0 0 10px rgba(231, 76, 60, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+        }
+        
+        /* 调整导航栏位置 */
+        .navbar {
+            top: 40px; /* 为公告栏留出空间 */
+        }
+        
+        /* 调整主内容区位置 */
+        .main-content {
+            margin-top: 120px; /* 增加顶部间距 */
+        }
+
+        /* 原有样式保持不变 */
         body {
             margin: 0;
             font-family: 'Segoe UI', Arial, sans-serif;
@@ -31,7 +81,6 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             position: fixed;
             width: 100%;
-            top: 0;
             z-index: 1000;
         }
 
@@ -169,10 +218,31 @@
                 flex-direction: column;
                 text-align: center;
             }
+            
+            /* 移动端调整公告栏 */
+            .announcement-bar {
+                padding: 10px 15px;
+                font-size: 14px;
+            }
+            
+            .navbar {
+                top: 36px;
+            }
+            
+            .main-content {
+                margin-top: 100px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- 新增公告栏 -->
+    <div class="announcement-bar">
+        <span>⚠️ Important notice: This site(aka. Guang's Home 1.5) has expired, please go to</span>
+        <a href="https://www.guangyou.asia/" target="_blank">Guang's Home 2.0</a>
+        <span>to get the brand new content.</span>
+    </div>
+
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo" id="logo">Tech Insights</div>
@@ -227,6 +297,16 @@
     </div>
 
     <script>
+        // 新增公告栏关闭功能（可选）
+        const announcementBar = document.querySelector('.announcement-bar');
+        announcementBar.addEventListener('click', function() {
+            this.style.display = 'none';
+            // 调整导航栏和内容区位置
+            document.querySelector('.navbar').style.top = '0';
+            document.querySelector('.main-content').style.marginTop = '80px';
+        });
+
+        // 原有语言切换功能保持不变
         const content = {
             en: {
                 logo: "Gavin's Blog",

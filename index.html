@@ -5,12 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome!</title>
     <style>
+        /* 新增公告栏样式 - 不可关闭 */
+        .announcement-bar {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            text-align: center;
+            padding: 15px 20px;
+            font-weight: bold;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 2000;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            border-bottom: 2px solid #fff;
+            animation: pulse 2s infinite;
+        }
+        
+        .announcement-bar a {
+            color: #fff;
+            text-decoration: underline;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: rgba(0,0,0,0.2);
+            margin: 0 5px;
+        }
+        
+        .announcement-bar a:hover {
+            background: rgba(255,255,255,0.3);
+            text-decoration: none;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.6); }
+            70% { box-shadow: 0 0 0 10px rgba(231, 76, 60, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+        }
+        
+        /* 调整语言切换器位置 */
         .language-switcher {
             position: fixed;
-            top: 20px;
+            top: 60px; /* 下移以适应公告栏 */
             right: 20px;
             z-index: 1000;
         }
+        
+        /* 调整页面内容位置 */
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            padding-top: 80px; /* 为公告栏留出空间 */
+        }
+
+        /* 原有样式保持不变 */
         .language-switcher button {
             background: none;
             border: 1px solid #3498db;
@@ -29,13 +81,6 @@
             color: white;
         }
 
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
         .container {
             max-width: 800px;
             margin: 0 auto;
@@ -74,9 +119,31 @@
             color: #7f8c8d;
             font-style: italic;
         }
+        
+        /* 响应式调整 */
+        @media (max-width: 600px) {
+            .announcement-bar {
+                padding: 12px 15px;
+                font-size: 14px;
+            }
+            .language-switcher {
+                top: 55px;
+                right: 10px;
+            }
+            body {
+                padding-top: 70px;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- 新增不可关闭的公告栏 -->
+    <div class="announcement-bar">
+        <span>⚠️ This site has expired, go to </span>
+        <a href="https://www.guangyou.asia/" target="_blank">Guang's Home 2.0</a>
+        <span>to get new items.</span>
+    </div>
+
     <div class="language-switcher">
         <button id="enBtn" class="active">English</button>
         <button id="zhBtn">中文(繁體)</button>
